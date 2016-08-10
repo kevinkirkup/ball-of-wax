@@ -8,8 +8,29 @@ check_mail:0
 
 # Colorscheme for the traffic server debug logs
 colorscheme:trafficserver:Apache Traffic Server associated log files
-cs_re:green:^\[20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9][0-9][0-9]Z\]
+cs_re_s:blue:^(\[20[0-9-]*T[0-9:]*.[0-9]{3}Z\])
 cs_re:yellow,,bold:LOG\:.*$
-cs_re:blue,,bold:DEBUG\:.*$
+cs_re:blue,,bold:DEBUG\:
 cs_re:red,,bold:ERROR\:.*$
-cs_re:red:^NOTE\:.*$
+cs_re:red:^NOTE\:$
+cs_re:yellow:\([^ ]*\)
+cs_re_s:cyan:(http://[^ ]*\.[a-z0-9]*)
+
+# squid/squid3
+colorscheme:mysquid:http proxy server
+cs_re:blue:^[^ ]*
+cs_re_s:yellow:^[^ ]* *[0-9]* *([^ ]*)
+cs_re_s:green:^[^ ]* *[0-9]* *[^ ]* ([^ ]*)
+cs_re_s:cyan:^[^ ]* *[0-9]* *[^ ]* [^ ]* *[0-9]* *[^ ]* *([^ ]*)
+
+# traffic_diags
+colorscheme:traffic_diags:Traffic server diag logs
+cs_re:blue:^[^ ]*
+cs_re_s:yellow:^[^ ]* *[0-9]* *([^ ]*)
+cs_re_s:green:^[^ ]* *[0-9]* *[^ ]* ([^ ]*)
+cs_re_s:cyan:^[^ ]* *[0-9]* *[^ ]* [^ ]* *[0-9]* *[^ ]* *([^ ]*)
+
+cs_re_s:magenta:LOG: \[([a-zA-Z_-]*.cc:[0-9]*)\].*
+
+cs_re:red,,bold:ERROR:
+cs_re_s:cyan: *\[(http://[a-zA-Z0-9%/._-]*)\]
